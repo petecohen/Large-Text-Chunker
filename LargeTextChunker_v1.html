@@ -200,8 +200,17 @@
         function copyChunk(button, index) {
             const chunks = document.querySelectorAll('.chunk p');
             const chunkText = chunks[index].textContent;
+            
             navigator.clipboard.writeText(chunkText).then(() => {
                 const originalText = button.textContent;
                 button.textContent = 'Copied!';
                 setTimeout(() => {
                     button.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
